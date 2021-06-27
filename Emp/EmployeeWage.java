@@ -11,27 +11,31 @@ public class EmployeeWage
 }
 class Attendance extends Wage
 {
-    int empcheck = (int)Math.floor(Math.random() * 10) % 3;
+    int check;
+    static int days = 0;
     void isPresent()
     {
-        int fulltime =0;
-        int parttime =1;
-        switch(empcheck)
+        int wage = 0;
+        int totalWage = 0;
+        while ( days != 20 )
         {
-          case 0:
-          fulltime=0;
-              System.out.println("Employee is Present for full time ");
-              System.out.println("Wage is "+dailyWage(8));
-              break;
-          case 1:
-         parttime=1;
-            System.out.println("Employee is Present for part time ");
-            System.out.println("Wage is "+dailyWage(4));
-            break;
-         default:
-            System.out.println("Employee is Absent ");
-            break;
-      }
+            days++;
+            check = (int)(Math.floor(Math.random() * 10) % 3);
+            switch(check)
+            {
+                case 0:
+                    wage = dailyWage(8);
+                    break;
+                case 1:
+                    wage = dailyWage(4);
+                    break;
+                default:
+                    wage = 0;
+                    break;
+            }
+            totalWage = totalWage + wage;
+        }
+       System.out.println("Total earning of employee for a month is "+totalWage);
     }
 }
 class Wage
